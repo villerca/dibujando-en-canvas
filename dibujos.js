@@ -36,6 +36,8 @@ function dibujarLineas(color, xinicial, yinicial, xfinal, yfinal)
     lienzo.stroke();
     lienzo.closePath();
 }
+
+//---------ciclos por separados----------//
 // while(l < lineas)
 // {
 //     yi= 10 * l;
@@ -57,12 +59,12 @@ function dibujarLineas(color, xinicial, yinicial, xfinal, yfinal)
 
 
 
-// for(arr = 0; arr < lineas; arr++)
+// for(l = 0; l < lineas; l++)
 // {
 //     xi = 300- (10 * arr);
 //     yf= 10 *  arr;
 //     dibujarLineas("green", xi, 0, 0, yf);
-//     console.log(arr)
+//     console.log(l)
 // }
 
 
