@@ -1,31 +1,41 @@
+let texto = document.getElementById("texto_lineas");
+let boton = document.getElementById("botoncito");
+boton.addEventListener("click", dibujoPorClick)
+
 let d = document.getElementById("dibujito");
+let ancho = d.width;
 let lienzo = d.getContext("2d");
-let lineas = 30;
-let l = 0;
-let raya = 0;
-let arr = 0;
-let yi, xf, xi, yf;
 
+document.getElementById("texto_lineas").onkeyup = function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+    document.getElementById("botoncito").click();
+}
+}
 
-dibujarLineas("red", 1,1,1,300);
-dibujarLineas("red", 1,300,300,300);
-dibujarLineas("red", 300,1,1,1);
-dibujarLineas("red", 300,1,300,300);
-
-//-----------Todos los ciclos en 1 solo----//
+function dibujoPorClick()
+{
+    var m = parseInt(texto.value);
+    let lineas = m;
+    let l = 0;
+    let yi, xf;
+    let espacio = ancho/lineas;
+    dibujarLineas("red", 1,1,1,299);
+    dibujarLineas("red", 1,299,299,299);
 
 for(l = 0; l < lineas; l++)
 {
-    xi = 10 * l;
-    yf= 300 - (10 * l);
-    dibujarLineas("green", xi, 300, 300, yf);
-    dibujarLineas("green", xi, 0, 0, yf);
-    yi= 10 * l;
-    xf= 10 * (l + 1);
+    yi= espacio * l;
+    xf= espacio * (l + 1);
     dibujarLineas("blue", 0, yi, xf, 300);
     dibujarLineas("blue", 300, yi, xf, 0);
-}
 
+    xi= espacio * l;
+    yf= ancho - (espacio * l);
+    dibujarLineas("pink", xi, 300, 300, yf);
+    dibujarLineas("pink", xi, 0, 0, yf);
+}
+}
 
 function dibujarLineas(color, xinicial, yinicial, xfinal, yfinal)
 {
@@ -37,34 +47,6 @@ function dibujarLineas(color, xinicial, yinicial, xfinal, yfinal)
     lienzo.closePath();
 }
 
-//---------ciclos por separados----------//
-// while(l < lineas)
-// {
-//     yi= 10 * l;
-//     xf= 10 * (l + 1);
-//     dibujarLineas("blue", 0, yi, xf, 300);
-//     dibujarLineas("blue", 300, yi, xf, 0);
-//     l++;
-   
-// }
-// l= 0;
-// while(l < lineas)
-// {
-//     yi= 10 * l;
-//     xf= 10 * (l + 1);
-//     dibujarLineas("blue", 300, yi, xf, 0);
-//     l++;
-// }
 
-
-
-
-// for(l = 0; l < lineas; l++)
-// {
-//     xi = 300- (10 * arr);
-//     yf= 10 *  arr;
-//     dibujarLineas("green", xi, 0, 0, yf);
-//     console.log(l)
-// }
 
 
